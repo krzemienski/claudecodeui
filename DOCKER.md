@@ -68,6 +68,9 @@ claudecodeui/
 
 | Variable | Description | Default | Required |
 |----------|-------------|---------|----------|
+| `USER_HOME_DIR` | User home directory path | `${HOME}` | ✅ |
+| `CLAUDE_CONFIG_DIR` | Claude configuration directory | `${HOME}/.claude` | ✅ |
+| `CLAUDE_PROJECTS_PATH` | Claude projects directory | `${HOME}/.claude/projects` | ✅ |
 | `ANTHROPIC_API_KEY` | Your Claude API key | - | ✅ |
 | `DEFAULT_ADMIN_USERNAME` | Initial admin user | `admin` | ❌ |
 | `DEFAULT_ADMIN_PASSWORD` | Initial admin password | `change-me` | ❌ |
@@ -294,6 +297,19 @@ docker-compose exec app-dev npm install -g @anthropic-ai/claude-cli
 # Or mount from host
 # Add to docker-compose.yml volumes:
 # - /usr/local/bin/claude:/usr/local/bin/claude:ro
+```
+
+**Docker mount errors on macOS ("path not shared from host"):**
+```bash
+# Ensure required environment variables are set in .env file
+# For macOS users:
+USER_HOME_DIR=/Users/yourusername
+CLAUDE_CONFIG_DIR=/Users/yourusername/.claude
+CLAUDE_PROJECTS_PATH=/Users/yourusername/.claude/projects
+
+# Copy template and customize
+cp .env.docker .env
+# Edit .env with your actual username
 ```
 
 ### Logs & Debugging

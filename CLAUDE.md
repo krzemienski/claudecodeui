@@ -72,6 +72,9 @@ Key environment variables for Docker deployment:
 
 | Variable | Description | Example |
 |----------|-------------|---------|
+| `USER_HOME_DIR` | User home directory | `/Users/username` |
+| `CLAUDE_CONFIG_DIR` | Claude configuration directory | `/Users/username/.claude` |
+| `CLAUDE_PROJECTS_PATH` | Claude projects directory | `/Users/username/.claude/projects` |
 | `ANTHROPIC_API_KEY` | Your Claude API key | `sk-ant-xxxxx` |
 | `DEFAULT_ADMIN_USERNAME` | Initial admin user | `admin` |
 | `DEFAULT_ADMIN_PASSWORD` | Initial admin password | `secure-password` |

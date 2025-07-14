@@ -103,6 +103,11 @@ nano .env
 
 3. **Configure your environment variables:**
 ```bash
+# Required: Cross-platform path configuration
+USER_HOME_DIR=${HOME}                    # Your home directory
+CLAUDE_CONFIG_DIR=${HOME}/.claude        # Claude configuration directory  
+CLAUDE_PROJECTS_PATH=${HOME}/.claude/projects  # Claude projects directory
+
 # Required: Your Anthropic API key
 ANTHROPIC_API_KEY=sk-ant-your-api-key-here
 
@@ -112,11 +117,14 @@ DEFAULT_ADMIN_PASSWORD=your-secure-password
 
 # Optional: Custom workspace path for your projects
 HOST_WORKSPACE_PATH=${HOME}/Desktop
+```
 
-# Optional: Custom user paths (defaults to current user's home)
-CLAUDE_PROJECTS_PATH=${HOME}/.claude/projects
-CLAUDE_CONFIG_DIR=${HOME}/.claude
-USER_HOME_DIR=${HOME}
+**Important for macOS users:** The path variables above are required to prevent Docker mount errors. On macOS, make sure to set your actual user path:
+```bash
+# Example for macOS:
+USER_HOME_DIR=/Users/yourusername
+CLAUDE_CONFIG_DIR=/Users/yourusername/.claude
+CLAUDE_PROJECTS_PATH=/Users/yourusername/.claude/projects
 ```
 
 4. **Start with Docker Compose:**
@@ -143,6 +151,9 @@ The application supports comprehensive configuration through environment variabl
 
 | Variable | Description | Local Default | Docker Default | Required |
 |----------|-------------|---------------|----------------|----------|
+| `USER_HOME_DIR` | User home directory | `${HOME}` | `${HOME}` | ✅ |
+| `CLAUDE_CONFIG_DIR` | Claude config directory | `${HOME}/.claude` | `${HOME}/.claude` | ✅ |  
+| `CLAUDE_PROJECTS_PATH` | Claude projects directory | `${HOME}/.claude/projects` | `${HOME}/.claude/projects` | ✅ |
 | `PORT` | Backend server port | `3008` | `2008` | ❌ |
 | `VITE_PORT` | Frontend dev server port | `3009` | `2009` | ❌ |
 | `NODE_ENV` | Environment mode | `development` | `development` | ❌ |
@@ -311,6 +322,15 @@ pkill -f "npm run dev"
 ```bash
 # Fix database directory permissions
 sudo chown -R 1001:1001 ./data
+```
+
+**Docker mount errors on macOS:**
+```bash
+# Error: "path not shared from host and is not known to Docker"
+# Solution: Set correct environment variables in .env
+USER_HOME_DIR=/Users/yourusername
+CLAUDE_CONFIG_DIR=/Users/yourusername/.claude
+CLAUDE_PROJECTS_PATH=/Users/yourusername/.claude/projects
 ```
 
 **For complete Docker documentation, see [DOCKER.md](DOCKER.md)**
