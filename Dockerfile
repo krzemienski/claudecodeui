@@ -1,9 +1,13 @@
 # Multi-stage build for Claude Code UI
-
 # Stage 1: Build frontend
 FROM node:20-alpine AS frontend-builder
-
 WORKDIR /app
+
+# Install build dependencies for native modules like node-pty
+RUN apk add --no-cache \
+    python3 \
+    make \
+    g++
 
 # Copy package files
 COPY package*.json ./
