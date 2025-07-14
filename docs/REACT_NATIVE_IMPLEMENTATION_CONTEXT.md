@@ -88,15 +88,19 @@ const claudeCodeKeys = [
 
 ### Phase 1: Core Setup (Tasks rn-1 to rn-4)
 ```bash
-# Execute on Mac after cloning
+# On Mac after cloning, manually create the React Native project
 cd /path/to/claudecodeui
-./scripts/execute-react-native-conversion.sh
+mkdir mobile
+cd mobile
+npx react-native init ClaudeCodeMobile --template react-native-template-typescript
 ```
 
 ### Phase 2: Security & Storage (Tasks rn-5 to rn-7)
-Key implementation files created by script:
+Key implementation files to create:
 - `mobile/ClaudeCodeMobile/src/services/storage/secureStorage.ts`
 - `mobile/ClaudeCodeMobile/src/services/api/apiClient.ts`
+
+Search mem0 for: "React Native Secure Storage Implementation Pattern"
 
 ### Phase 3: Real-time Communication (Task rn-8)
 WebSocket manager with:
@@ -197,7 +201,7 @@ Critical iOS settings:
 - [ ] No crashes or hangs
 - [ ] All features work end-to-end
 
-## File Structure Created by Script
+## File Structure to Create
 
 ```
 mobile/ClaudeCodeMobile/
@@ -252,12 +256,16 @@ npx react-native run-ios --configuration Release
 ## Next Steps on Mac
 
 1. Clone repository and checkout `feature/react-native` branch
-2. Run the setup script: `./scripts/execute-react-native-conversion.sh`
-3. Start working through todos in order (rn-1 through rn-25)
-4. Search mem0 for patterns before implementing each feature
-5. Test with real Docker backend (no mocks)
-6. Store all learnings back to mem0
-7. Commit progress frequently
+2. Review all documentation files in /docs
+3. Search mem0 for stored patterns using the provided keys
+4. Start working through todos in order (rn-1 through rn-25)
+5. For each task:
+   - Search mem0 for relevant patterns
+   - Use Context7 for latest library docs
+   - Implement with production standards
+   - Test with real Docker backend (no mocks)
+   - Store new learnings back to mem0
+6. Commit progress frequently with clear messages
 
 ---
 

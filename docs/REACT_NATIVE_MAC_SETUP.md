@@ -100,13 +100,25 @@ ifconfig | grep "inet " | grep -v 127.0.0.1
 - Use the IP address of the machine running the Docker backend
 - Ensure ports 2008 (API) and 2008 (WebSocket) are accessible
 
-### 4. Execute Initial Setup
+### 4. Initialize React Native Project
 ```bash
-# Make the script executable if needed
-chmod +x scripts/execute-react-native-conversion.sh
+# Create mobile directory
+mkdir mobile
+cd mobile
 
-# Run the setup script
-./scripts/execute-react-native-conversion.sh
+# Initialize React Native with TypeScript
+npx react-native init ClaudeCodeMobile --template react-native-template-typescript
+
+# Install core dependencies
+cd ClaudeCodeMobile
+npm install @react-navigation/native @react-navigation/native-stack
+npm install react-native-screens react-native-safe-area-context
+npm install react-native-keychain
+npm install react-native-vector-icons
+npm install react-native-paper
+
+# iOS specific
+cd ios && pod install && cd ..
 ```
 
 ## Development Workflow
