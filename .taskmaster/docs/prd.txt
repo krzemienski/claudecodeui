@@ -1,0 +1,163 @@
+Product Requirements Document: Claude Code UI - React Native Mobile Application
+
+Executive Summary:
+Convert the existing Claude Code UI web application into a native iOS mobile application using React Native, maintaining full feature parity with the web version while leveraging native mobile capabilities. The mobile app will connect to the existing Docker-based backend infrastructure.
+
+Problem Statement:
+Users need mobile access to Claude Code UI for on-the-go coding assistance and project management. The current web interface is not optimized for mobile devices, limiting accessibility and productivity when away from desktop environments.
+
+Goals and Objectives:
+1. Create a native iOS application with full feature parity to the web version
+2. Implement secure credential storage using native iOS Keychain
+3. Enable dynamic backend configuration for connecting to Docker containers
+4. Provide native mobile UX with platform-specific optimizations
+5. Maintain real-time WebSocket communication for chat functionality
+6. Support offline capabilities with intelligent synchronization
+
+User Stories:
+
+As a developer, I want to:
+- Configure my backend server URL on first launch so I can connect to my Docker instance
+- Securely log in with my credentials stored in iOS Keychain
+- Access all my projects with native scrolling and navigation
+- Chat with Claude using a native mobile interface
+- Browse and edit files with syntax highlighting
+- Manage MCP servers and tool permissions
+- Receive push notifications for long-running operations
+- Use biometric authentication for quick access
+
+Technical Requirements:
+
+Architecture:
+- React Native with TypeScript for type safety
+- React Navigation for native navigation patterns
+- WebSocket connection to existing Express backend
+- JWT authentication with Keychain storage
+- Modular component architecture for maintainability
+
+Core Dependencies:
+- @react-navigation/native for navigation
+- react-native-keychain for secure storage
+- react-native-safe-area-context for device compatibility
+- react-native-vector-icons for UI elements
+- react-native-paper for Material Design components
+
+Security Requirements:
+- All credentials stored in iOS Keychain
+- JWT tokens with secure refresh mechanism
+- SSL/TLS for all backend communication
+- Biometric authentication support
+- No hardcoded credentials or URLs
+
+Performance Requirements:
+- App launch time under 2 seconds
+- 60fps scrolling performance
+- Memory usage under 200MB
+- Efficient battery usage
+- Smooth animations and transitions
+
+Feature Set:
+
+1. Authentication & Configuration:
+   - Backend URL configuration screen
+   - Login with username/password
+   - JWT token management
+   - Biometric authentication option
+   - Session persistence
+
+2. Project Management:
+   - List all projects with search
+   - Create/delete projects
+   - Project status indicators
+   - Git integration status
+   - Swipe actions for quick operations
+
+3. Chat Interface:
+   - Real-time messaging with Claude
+   - Message history with pagination
+   - Code syntax highlighting
+   - File attachments support
+   - Status indicators for Claude responses
+   - Session protection during operations
+
+4. File Operations:
+   - File browser with tree view
+   - Syntax highlighted file viewing
+   - Basic file editing capabilities
+   - File creation and deletion
+   - Share files externally
+
+5. MCP Server Management:
+   - List detected MCP servers
+   - Add/remove MCP servers
+   - Configure server scopes
+   - Test server connections
+   - Permission management
+
+6. Settings & Tools:
+   - Tool permission configuration
+   - Allowed/disallowed tools management
+   - Claude executable path setting
+   - Theme selection (light/dark)
+   - Notification preferences
+
+7. Native Features:
+   - Push notifications
+   - Haptic feedback
+   - Native share sheet
+   - Clipboard integration
+   - Background task support
+
+Non-Functional Requirements:
+
+Accessibility:
+- VoiceOver support for iOS
+- Dynamic type support
+- High contrast mode
+- Keyboard navigation
+
+Localization:
+- English language support (initial)
+- RTL layout support ready
+- Expandable to other languages
+
+Testing Requirements:
+- Unit tests for business logic
+- Integration tests for API calls
+- E2E tests with Detox
+- Manual testing on physical devices
+- Performance profiling
+
+Deployment:
+- TestFlight for beta testing
+- App Store deployment ready
+- Enterprise distribution option
+- CI/CD pipeline integration
+
+Success Metrics:
+- Feature parity with web version achieved
+- Sub-2 second app launch time
+- 95% crash-free rate
+- 4.5+ App Store rating
+- 80% user retention after 30 days
+
+Timeline:
+- Week 1-2: Project setup and core infrastructure
+- Week 3-4: Authentication and navigation implementation
+- Week 5-6: Core features (chat, projects, files)
+- Week 7-8: Advanced features (MCP, settings)
+- Week 9-10: Testing, optimization, and release prep
+
+Constraints:
+- Must work with existing backend without modifications
+- iOS 13.0+ support required
+- Must handle offline scenarios gracefully
+- Budget for 10-week development cycle
+- Single developer resource
+
+Future Considerations:
+- Android version development
+- iPad-specific optimizations
+- Apple Watch companion app
+- Siri Shortcuts integration
+- Widget support for iOS 14+
